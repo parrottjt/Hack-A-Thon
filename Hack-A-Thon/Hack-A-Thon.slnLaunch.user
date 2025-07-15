@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "hack-a-thon.client\\hack-a-thon.client.esproj",
+        "Action": "Start",
+        "DebugTarget": "localhost (Chrome)"
+      },
+      {
+        "Path": "Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

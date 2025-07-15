@@ -1,0 +1,6 @@
+@Hack_A_Thon.Server_HostAddress = http://localhost:5093
+
+GET {{Hack_A_Thon.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

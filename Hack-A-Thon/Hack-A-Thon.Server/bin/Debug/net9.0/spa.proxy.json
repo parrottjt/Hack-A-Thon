@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:53682",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\..\\hack-a-thon.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
