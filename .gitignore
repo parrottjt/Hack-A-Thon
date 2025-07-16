@@ -1,1 +1,10 @@
 /Hack-A-Thon/.vs
+/Hack-A-Thon/Hack-A-Thon.Server/obj
+/Hack-A-Thon/Hack-A-Thon.Server/bin
+/Hack-A-Thon/Hack-A-Thon.Client/obj
+/Hack-A-Thon/Hack-A-Thon.Client/bin
+/Hack-A-Thon/Hack-A-Thon.Shared/obj
+/Hack-A-Thon/Hack-A-Thon.Shared/bin
+/Hack-A-Thon/Hack-A-Thon.Tests/obj
+/Hack-A-Thon/Hack-A-Thon.Tests/bin
+/Hack-A-Thon/Hack-A-Thon.Tests/TestResults
