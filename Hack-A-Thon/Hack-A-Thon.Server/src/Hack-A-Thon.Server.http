@@ -1,14 +1,10 @@
 @remoteHost = http://localhost:5093
 
-GET {{remoteHost}}/weatherforecast/
-Accept: application/json
-
-###
 GET {{remoteHost}}/VideoGames/
 Accept: application/json
 
 ###
-GET {{remoteHost}}/videogame/
+GET {{remoteHost}}/VideoGame/
 Content-Type: application/json
 {
   "Title": "Elden Ring"
