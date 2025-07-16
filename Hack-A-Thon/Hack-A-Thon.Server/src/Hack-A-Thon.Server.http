@@ -1,6 +1,17 @@
-@Hack_A_Thon.Server_HostAddress = http://localhost:5093
+@remoteHost = http://localhost:5093
 
-GET {{Hack_A_Thon.Server_HostAddress}}/weatherforecast/
+GET {{remoteHost}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{remoteHost}}/VideoGames/
+Accept: application/json
+
+###
+GET {{remoteHost}}/videogame/
+Content-Type: application/json
+{
+  "Title": "Elden Ring"
+}
+
+
