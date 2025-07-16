@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 {
-    public record GetVideoGame(VideoGameDto videoGame) : IRequest<List<VideoGame>>;
+    //public record GetVideoGame(VideoGameDto videoGame) : IRequest<List<VideoGame>>;
     public record GetVideoGames() : IRequest<List<VideoGame>>;
 
     public class GetVideoGameHandler(Context context, IMediator mediator, IMapper mapper)
-        : IRequestHandler<GetVideoGame, List<VideoGame>>
+        : IRequestHandler<GetVideoGames, List<VideoGame>>
     {
         private readonly Context _context = context;
         private readonly IMediator _mediator = mediator;
@@ -35,9 +35,8 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
             
         //    return Task.FromResult(query.ToList());
         //}
-        public Task<List<VideoGame>> Handle(GetVideoGame request, CancellationToken cancellationToken)
+        public Task<List<VideoGame>> Handle(GetVideoGames request, CancellationToken cancellationToken)
         {
-            Console.WriteLine("Hit");
             return Task.FromResult(_context.VideoGames.ToList());
         }
     }
