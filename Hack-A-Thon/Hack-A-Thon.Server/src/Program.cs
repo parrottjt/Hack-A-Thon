@@ -8,6 +8,13 @@ using Hack_A_Thon.Server.src.API.Common;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+    options.AddPolicy("AllowDevClient", policy =>
+    {
+        policy.WithOrigins("https://localhost:53682")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    }));
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -17,10 +24,14 @@ builder.Services.AddDbContext<Context>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
+
+
 builder.Services.AddApplicationServices();
 
 
 var app = builder.Build();
+
+app.UseCors("AllowDevClient");
 
 app.UseDefaultFiles();
 app.MapStaticAssets();

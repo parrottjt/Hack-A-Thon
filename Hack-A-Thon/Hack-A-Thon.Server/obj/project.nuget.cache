@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RA5bpCfMfic=",
+  "dgSpecHash": "hHKiWNMm8lE=",
   "success": true,
-  "projectFilePath": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
+  "projectFilePath": "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\autofixture\\4.18.1\\autofixture.4.18.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
