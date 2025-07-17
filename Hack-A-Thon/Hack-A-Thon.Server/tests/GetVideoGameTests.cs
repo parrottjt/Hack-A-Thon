@@ -27,7 +27,7 @@ namespace Hack_A_Thon.Server.tests
                     Developer = "343 Industries",
                     Publisher = "Xbox Game Studios",
                     Genre = "Shooter",
-                    EsrbRating = ESRBRating.T
+                    EsrbRating = ESRBRating.Teen
                 },
                 new VideoGame
                 {
@@ -35,7 +35,7 @@ namespace Hack_A_Thon.Server.tests
                     Developer = "ConcernedApe",
                     Publisher = "ConcernedApe",
                     Genre = "Simulation",
-                    EsrbRating = ESRBRating.E10
+                    EsrbRating = ESRBRating.Everyone10Plus
                 },
                 new VideoGame()
                 {
@@ -43,7 +43,7 @@ namespace Hack_A_Thon.Server.tests
                     Developer = "Nintendo EPD",
                     Publisher = "Nintendo",
                     Genre = "Platformer",
-                    EsrbRating = ESRBRating.E10
+                    EsrbRating = ESRBRating.Everyone10Plus
                 },
                 new VideoGame()
                 {
@@ -51,7 +51,8 @@ namespace Hack_A_Thon.Server.tests
                     Developer = "Nintendo EPD",
                     Publisher = "Nintendo",
                     Genre = "Simulation",
-                    EsrbRating = ESRBRating.E                }
+                    EsrbRating = ESRBRating.Everyone
+                }
 
             );
 
@@ -76,8 +77,8 @@ namespace Hack_A_Thon.Server.tests
         [Theory]
         [InlineData("Halo", "", "", "", null, 1)]
         [InlineData("", "Nintendo", "Nintendo", "", null, 2)]
-        [InlineData("", "", "", "", ESRBRating.E10, 2)]
-        [InlineData("Halo", "", "", "", ESRBRating.E, 0)]
+        [InlineData("", "", "", "", ESRBRating.Everyone10Plus, 2)]
+        [InlineData("Halo", "", "", "", ESRBRating.Everyone, 0)]
         [InlineData("", "","","Simulation", null, 2)]
         public async Task GetVideoGame_WithValidFilter_ShouldReturnTrue(string title, string developer, string publisher,
             string genre, ESRBRating? esrbRating, int expectedValue)

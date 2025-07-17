@@ -15,7 +15,7 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
         }
 
         [HttpGet("VideoGame")]
-        public async Task<List<VideoGame>> Get([FromQuery]VideoGameDto dto)
+        public async Task<List<VideoGame>> Get(VideoGameDto dto)
         {
             return await mediator.Send(new GetVideoGame(dto));
         }
