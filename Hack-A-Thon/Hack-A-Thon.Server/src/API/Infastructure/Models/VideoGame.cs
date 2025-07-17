@@ -2,11 +2,11 @@
 {
     public enum ESRBRating
     {
-        Everyone,
-        Everyone10Plus,
-        Teen,
-        Mature,
-        Adult
+        E,
+        E10,
+        T,
+        M,
+        AO
     }
     public class VideoGame
     {
@@ -17,6 +17,6 @@
         public string Developer { get; set; } = "";
         public string Publisher { get; set; } = "";
         public string Genre { get; set; } = "";
-        public ESRBRating EsrbRating { get; set; } = ESRBRating.Everyone;
+        public ESRBRating? EsrbRating { get; set; } = null;
     }
 }

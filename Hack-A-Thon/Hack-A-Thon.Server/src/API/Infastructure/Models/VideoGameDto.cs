@@ -1,4 +1,6 @@
-﻿namespace Hack_A_Thon.Server.src.API.Infastructure.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Hack_A_Thon.Server.src.API.Infastructure.Models
 {
     public class VideoGameDto()
     {
@@ -6,6 +8,8 @@
         public string? Developer { get; set; } = "";
         public string? Publisher { get; set; } = "";
         public string? Genre { get; set; } = "";
+
+        [FromQuery]
         public ESRBRating? EsrbRating { get; set; }
     }
 }

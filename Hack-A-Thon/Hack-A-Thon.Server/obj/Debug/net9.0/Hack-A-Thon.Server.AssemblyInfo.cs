@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hack-A-Thon.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b125422ce8821d3e488abffafbc394393b87f74")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8736fb507757efe3429f1bdc43be19be45919769")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hack-A-Thon.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hack-A-Thon.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

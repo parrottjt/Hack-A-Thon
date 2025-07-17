@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6 d17.14
+VisualStudioVersion = 17.14.36310.24 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "hack-a-thon.client", "hack-a-thon.client\hack-a-thon.client.esproj", "{FA718B0E-9E63-A747-B7EE-62FCBC6D9D4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hack-A-Thon.Server", "Hack-A-Thon.Server\Hack-A-Thon.Server.csproj", "{81F781C0-2F5E-4A19-B246-869BF31C16BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hack-A-Thon.Server", "Hack-A-Thon.Server\Hack-A-Thon.Server.csproj", "{A93C693C-32D4-40C2-B984-A0DEBF9AB073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,15 +19,15 @@ Global
 		{FA718B0E-9E63-A747-B7EE-62FCBC6D9D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA718B0E-9E63-A747-B7EE-62FCBC6D9D4B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA718B0E-9E63-A747-B7EE-62FCBC6D9D4B}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{81F781C0-2F5E-4A19-B246-869BF31C16BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81F781C0-2F5E-4A19-B246-869BF31C16BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81F781C0-2F5E-4A19-B246-869BF31C16BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81F781C0-2F5E-4A19-B246-869BF31C16BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A93C693C-32D4-40C2-B984-A0DEBF9AB073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93C693C-32D4-40C2-B984-A0DEBF9AB073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93C693C-32D4-40C2-B984-A0DEBF9AB073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93C693C-32D4-40C2-B984-A0DEBF9AB073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C6CF5496-BB06-4B50-B9E9-1E9464BF428D}
+		SolutionGuid = {65147C38-E28C-4488-BC32-887F3784B6C1}
 	EndGlobalSection
 EndGlobal
