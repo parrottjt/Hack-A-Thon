@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj": {}
+    "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj": {}
   },
   "projects": {
-    "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj": {
+    "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
+        "projectUniqueName": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
         "projectName": "Hack-A-Thon.Server",
-        "projectPath": "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
+        "projectPath": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\obj\\",
         "projectStyle": "PackageReference",
