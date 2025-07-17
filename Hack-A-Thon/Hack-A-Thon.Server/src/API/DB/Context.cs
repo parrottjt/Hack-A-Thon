@@ -18,7 +18,7 @@ namespace Hack_A_Thon.Server.src.API.DB
                     Developer = "FromSoftware",
                     Publisher = "Bandai Namco",
                     Genre = "Action RPG",
-                    EsrbRating = ESRBRating.M
+                    EsrbRating = ESRBRating.Mature
                 },
                 new VideoGame
                 {
@@ -28,7 +28,7 @@ namespace Hack_A_Thon.Server.src.API.DB
                     Developer = "Nintendo",
                     Publisher = "Nintendo",
                     Genre = "Action-Adventure",
-                    EsrbRating = ESRBRating.E10
+                    EsrbRating = ESRBRating.Everyone10Plus
                 }
                 );
         }
