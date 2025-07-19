@@ -9,5 +9,16 @@ Content-Type: application/json
 {
   "Title": "Elden Ring"
 }
-
+###
+POST {{remoteHost}}/Create
+Content-Type: application/json
+{
+    "gameCoverImageSrc": "https://cdn.example.com/images/expedition33-cover.jpg",
+    "title": "Expedition 33",
+    "description": "Embark on a turn-based journey through a surreal, post-apocalyptic world. Expedition 33 challenges players to explore, survive, and confront impossible odds in a visually stunning RPG adventure.",
+    "developer": "Sandfall Interactive",
+    "publisher": "Kepler Interactive",
+    "genre": "Turn-Based RPG",
+    "esrbRating": "M"
+}
 
