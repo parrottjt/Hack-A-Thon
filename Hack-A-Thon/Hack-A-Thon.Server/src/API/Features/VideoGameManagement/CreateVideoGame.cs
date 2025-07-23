@@ -1,12 +1,19 @@
-﻿using AutoMapper;
-using Hack_A_Thon.Server.src.API.DB;
+﻿using Hack_A_Thon.Server.src.API.DB;
 using Hack_A_Thon.Server.src.API.Infastructure.Models;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 {
-    public record CreateVideoGame(VideoGameDto dto) : IRequest<VideoGame>;
+    public record CreateVideoGame : IRequest<VideoGame>
+    {
+        public string? GameCoverImageSrc { get; init; } = string.Empty;
+        public string Title { get; init; } = string.Empty;
+        public string? Description { get; init; } = string.Empty;
+        public string? Developer { get; init; } = string.Empty;
+        public string? Publisher { get; init; } = string.Empty;
+        public string? Genre { get; init; } = string.Empty;
+        public string? EsrbRating { get; init; }
+    };
 
     public class CreateVideoGameHandler(Context context) : IRequestHandler<CreateVideoGame, VideoGame>
     {
@@ -14,13 +21,13 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
         {
             VideoGame videoGame = new VideoGame
             {
-                Title = request.dto.Title is not null ? request.dto.Title : "",
-                GameCoverImageSrc = request.dto.GameCoverImageSrc,
-                Description = request.dto.Description,
-                Developer = request.dto.Developer is not null ? request.dto.Developer : "",
-                Publisher = request.dto.Publisher is not null ? request.dto.Publisher : "",
-                Genre = request.dto.Genre is not null ? request.dto.Genre : "",
-                EsrbRating = (ESRBRating)(request.dto.EsrbRating is not null ? request.dto.EsrbRating : ESRBRating.Undefined)
+                Title = request.Title,
+                GameCoverImageSrc = request.GameCoverImageSrc,
+                Description = request.Description is not null ? request.Description : "",
+                Developer = request.Developer is not null ? request.Developer : "",
+                Publisher = request.Publisher is not null ? request.Publisher : "",
+                Genre = request.Genre is not null ? request.Genre : "",
+                EsrbRating = Enum.TryParse<ESRBRating>(request.EsrbRating, out var result) ? result : ESRBRating.Undefined
             };
 
             context.VideoGames.Add(videoGame);

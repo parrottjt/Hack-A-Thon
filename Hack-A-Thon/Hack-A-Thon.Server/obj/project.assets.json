@@ -10854,9 +10854,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
+      "projectUniqueName": "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
       "projectName": "Hack-A-Thon.Server",
-      "projectPath": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
+      "projectPath": "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\Hack-A-Thon.Server\\Hack-A-Thon.Server.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\Hack-A-Thon.Server\\obj\\",
       "projectStyle": "PackageReference",
@@ -11000,5 +11000,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
 }

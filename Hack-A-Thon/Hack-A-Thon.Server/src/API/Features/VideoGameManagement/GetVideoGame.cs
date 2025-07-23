@@ -1,14 +1,19 @@
-﻿using System.Diagnostics;
-using AutoMapper;
-using Hack_A_Thon.Server.src.API.DB;
+﻿using Hack_A_Thon.Server.src.API.DB;
 using Hack_A_Thon.Server.src.API.Infastructure.Models;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 {
     public record GetVideoGames() : IRequest<List<VideoGame>>;
-    public record GetVideoGame(VideoGameDto videoGame) : IRequest<List<VideoGame>>;
+    public record GetVideoGame() : IRequest<List<VideoGame>>
+    {
+        public string? Title { get; init; } = string.Empty;
+        public string? Description { get; init; } = string.Empty;
+        public string? Developer { get; init; } = string.Empty;
+        public string? Publisher { get; init; } = string.Empty;
+        public string? Genre { get; init; } = string.Empty;
+        public ESRBRating? EsrbRating { get; init; } = ESRBRating.Undefined;
+    };
 
     public class GetVideoGamesHandler(Context context)
         : IRequestHandler<GetVideoGames, List<VideoGame>>
@@ -24,7 +29,7 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
     {
        public Task<List<VideoGame>> Handle(GetVideoGame request, CancellationToken cancellationToken)
             {
-                var search = request.videoGame;
+                var search = request;
                 var query = context.VideoGames.AsQueryable();
 
                 if (string.IsNullOrEmpty(search.Title) == false)

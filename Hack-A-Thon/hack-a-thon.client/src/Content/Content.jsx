@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+
+import React from 'react';
+import { useVideoGames } from '../features/videoGames/useVideoGames';
 import VideoGameCard from './VideoGameCard';
-import "./Content.css";
+import "../features/videoGames/Content.css";
 
 const Content = () => {
-    const [videoGames, setVideoGames] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [dto, setDto] = useState({
+    const { videoGames, loading, error, filters, setFilters } = useVideoGames({
         title: '',
         developer: '',
         publisher: '',
@@ -14,48 +14,8 @@ const Content = () => {
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setDto(prev => ({ ...prev, [name]: value }));
+        setFilters(f => ({ ...f, [e.target.name]: e.target.value }));
     };
-
-    useEffect(() => {
-        populateVideoGames();
-    }, []);
-
-    async function populateVideoGames() {
-        try {
-            const response = await fetch('https://localhost:7042/VideoGames');
-            if (!response.ok) {
-                throw new Error('Failed to fetch video games');
-            }
-            const data = await response.json();
-            setVideoGames(data);
-        } catch (error) {
-            console.error("Error fetching video games:", error);
-            setVideoGames([]); // fallback to empty
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    async function filterVideoGames() {
-        try {
-            setLoading(true);
-            const queryString = new URLSearchParams(dto).toString();
-            const response = await fetch('https://localhost:7042/VideoGame?' + queryString);
-            if (!response.ok) {
-                throw new Error('Failed to fetch video games');
-            }
-
-            const data = await response.json();
-            setVideoGames(data);
-        } catch (error) {
-            console.error("Error fetching video games:", error);
-            setVideoGames([]); // fallback to empty
-        } finally {
-            setLoading(false);
-        }
-    }
 
     return (
         <main className="content">
@@ -64,34 +24,34 @@ const Content = () => {
                     type="text"
                     name="title"
                     placeholder='Search by title...'
-                    value={dto.title}
+                    value={filters.title}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     name="developer"
                     placeholder='Search by developer...'
-                    value={dto.developer}
+                    value={filters.developer}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     name="publisher"
                     placeholder='Search by publisher...'
-                    value={dto.publisher}
+                    value={filters.publisher}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     name="genre"
                     placeholder='Search by genre...'
-                    value={dto.genre}
+                    value={filters.genre}
                     onChange={handleChange}
                 />
                 <select
                     name="esrbRating"
                     placeholder='Select ESRB Rating...'
-                    value={dto.esrbRating}
+                    value={filters.esrbRating}
                     onChange={handleChange}
                 >
                     <option value="">All Ratings</option>
@@ -101,22 +61,21 @@ const Content = () => {
                     <option value="M">M (Mature)</option>
                     <option value="AO">AO (Adults Only)</option>
                 </select>
-                <button onClick={filterVideoGames}>Filter</button>
             </div>
             {loading ? (
                 <p>
                     <em>Loading... Please wait.</em>
                 </p>
+            ) : error ? (
+                <p><em>Error: {error.message}</em></p>
+            ) : videoGames.length === 0 ? (
+                <p><em>No video games found.</em></p>
             ) : (
-                videoGames.length === 0 ? (
-                    <p><em>No video games found.</em></p>
-                ) : (
-                    <div className="card-container">
-                        {videoGames.map(game => (
-                            <VideoGameCard key={game.id} data={game} />
-                        ))}
-                    </div>
-                )
+                <div className="card-container">
+                    {videoGames.map(game => (
+                        <VideoGameCard key={game.id} data={game} />
+                    ))}
+                </div>
             )}
         </main>
     );
