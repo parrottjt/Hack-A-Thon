@@ -4,7 +4,6 @@ using Hack_A_Thon.Server.src.API.Features.VideoGameManagement;
 using Hack_A_Thon.Server.src.API.Infastructure.Models;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Hack_A_Thon.Server.tests
 {
@@ -87,7 +86,7 @@ namespace Hack_A_Thon.Server.tests
             var context = GetInMemoryContext();
             var handler = new GetVideoGameHandler(context);
 
-            var command = _fixture.Build<VideoGameDto>()
+            var command = _fixture.Build<GetVideoGame>()
                 .With(c => c.Title, title)
                 .With(c => c.Developer, developer)
                 .With(c => c.Publisher, publisher)
@@ -96,7 +95,7 @@ namespace Hack_A_Thon.Server.tests
                 .Create();
 
             // Act
-            var result = await handler.Handle(new GetVideoGame(command), CancellationToken.None);
+            var result = await handler.Handle(command, CancellationToken.None);
 
             // Assert
             Assert.Equal(expectedValue, result.Count);
@@ -113,7 +112,7 @@ namespace Hack_A_Thon.Server.tests
             var context = GetInMemoryContext();
             var handler = new GetVideoGameHandler(context);
 
-            var command = _fixture.Build<VideoGameDto>()
+            var command = _fixture.Build<GetVideoGame>()
                 .With(c => c.Title, title)
                 .With(c => c.Developer, developer)
                 .With(c => c.Publisher, publisher)
@@ -122,7 +121,7 @@ namespace Hack_A_Thon.Server.tests
                 .Create();
 
             // Act
-            var result = await handler.Handle(new GetVideoGame(command), CancellationToken.None);
+            var result = await handler.Handle(command, CancellationToken.None);
 
             // Assert
             Assert.NotEqual(expectedValue, result.Count);

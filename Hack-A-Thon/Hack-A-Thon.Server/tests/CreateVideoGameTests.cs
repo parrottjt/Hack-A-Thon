@@ -23,25 +23,25 @@ namespace Hack_A_Thon.Server.tests
         }
 
         [Theory]
-        [InlineData("", "", "", "", "", ESRBRating.Undefined)]
-        [InlineData("Elden Ring", "This is a test", "Giga", "Chad", "Pain", ESRBRating.Undefined)]
-        [InlineData("Expedition 33", "A surreal turn-based RPG journey.", "Sandfall Interactive", "Kepler Interactive", "Turn-Based RPG", ESRBRating.M)]
-        [InlineData("Hollow Knight", "Descend into a dark, mysterious world.", "Team Cherry", "Team Cherry", "Metroidvania", ESRBRating.T)]
-        [InlineData("The Witcher 3", "A story-driven open-world RPG.", "CD Projekt Red", "CD Projekt", "RPG", ESRBRating.M)]
-        [InlineData("Stardew Valley", "Build the farm of your dreams.", "ConcernedApe", "ConcernedApe", "Simulation", ESRBRating.E10)]
+        [InlineData("", "", "", "", "", "Undf")]
+        [InlineData("Elden Ring", "This is a test", "Giga", "Chad", "Pain", "Undef")]
+        [InlineData("Expedition 33", "A surreal turn-based RPG journey.", "Sandfall Interactive", "Kepler Interactive", "Turn-Based RPG", "M")]
+        [InlineData("Hollow Knight", "Descend into a dark, mysterious world.", "Team Cherry", "Team Cherry", "Metroidvania", "T")]
+        [InlineData("The Witcher 3", "A story-driven open-world RPG.", "CD Projekt Red", "CD Projekt", "RPG", "M")]
+        [InlineData("Stardew Valley", "Build the farm of your dreams.", "ConcernedApe", "ConcernedApe", "Simulation", "E10")]
         public async Task CreateVideoGame_WithValidDto_ShouldReturnTrue(
             string title,
             string description,
             string developer,
             string pubisher,
             string genre,
-            ESRBRating eSRBRating)
+            string eSRBRating)
         {
             // Arrange
             using var context = InMemoryContext();
             var handler = new CreateVideoGameHandler(context);
 
-            var dto = _fixture.Build<VideoGameDto>()
+            var dto = _fixture.Build<CreateVideoGame>()
                 .With(c => c.Title, title)
                 .With(c => c.Description, description)
                 .With(c => c.Developer, developer)
@@ -51,7 +51,7 @@ namespace Hack_A_Thon.Server.tests
                 .Create();
 
             // Act
-            var result = await handler.Handle(new CreateVideoGame(dto), CancellationToken.None);
+            var result = await handler.Handle(dto, CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);

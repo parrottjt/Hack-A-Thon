@@ -16,15 +16,15 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 
         
         [HttpGet("VideoGame")]
-        public async Task<List<VideoGame>> Get([FromQuery]VideoGameDto dto)
+        public async Task<List<VideoGame>> Get([FromQuery] GetVideoGame command)
         {
-            return await mediator.Send(new GetVideoGame(dto));
+            return await mediator.Send(command);
         }
 
         [HttpPost("Create")]
-        public async Task<VideoGame> Create([FromBody] VideoGameDto dto)
+        public async Task<VideoGame> Create([FromBody] CreateVideoGame command)
         {
-            return await mediator.Send(new CreateVideoGame(dto));
+            return await mediator.Send(command);
         }
     }
 }
