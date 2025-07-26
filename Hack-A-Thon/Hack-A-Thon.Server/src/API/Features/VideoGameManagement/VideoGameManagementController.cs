@@ -26,5 +26,11 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
         {
             return await mediator.Send(command);
         }
+
+        [HttpDelete("Delete")]
+        public async Task<VideoGame> Delete([FromBody] DeleteVideoGame command)
+        {
+            return await mediator.Send(command);
+        }
     }
 }

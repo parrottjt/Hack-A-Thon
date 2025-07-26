@@ -7,7 +7,7 @@
   "type": "chrome",
   "request": "launch",
   "url": "https://localhost:52433",
-  "webRoot": "G:\\Github\\Hack-A-Thon\\Hack-A-Thon\\hack-a-thon.client"
+  "webRoot": "G:\\Github\\Hack-A-Thon\\Hack-a-Thon\\hack-a-thon.client"
 }</LaunchJsonTarget>
   </PropertyGroup>
 </Project>
