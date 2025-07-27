@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { useVideoGames } from '../features/videoGames/useVideoGames';
+import { useVideoGames } from './features/useVideoGame/useVideoGames';
 import VideoGameCard from './VideoGameCard';
-import "../features/videoGames/Content.css";
+import "./Content.css";
 
 const Content = () => {
     const { videoGames, loading, error, filters, setFilters } = useVideoGames({
