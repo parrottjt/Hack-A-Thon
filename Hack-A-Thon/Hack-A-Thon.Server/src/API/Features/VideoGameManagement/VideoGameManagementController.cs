@@ -32,5 +32,11 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
         {
             return await mediator.Send(command);
         }
+
+        [HttpPut("Update")]
+        public async Task<VideoGame> Put([FromBody] UpdateVideoGame.Command command)
+        {
+            return await mediator.Send(command);
+        }
     }
 }
