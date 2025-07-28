@@ -1,8 +1,6 @@
 ﻿using AutoFixture;
-using AutoMapper;
 using Hack_A_Thon.Server.src.API.DB;
 using Hack_A_Thon.Server.src.API.Features.VideoGameManagement;
-using Hack_A_Thon.Server.src.API.Infastructure.Models;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
@@ -39,9 +37,9 @@ namespace Hack_A_Thon.Server.tests
         {
             // Arrange
             using var context = InMemoryContext();
-            var handler = new CreateVideoGameHandler(context);
+            var handler = new CreateVideoGame.Handler(context);
 
-            var dto = _fixture.Build<CreateVideoGame>()
+            var dto = _fixture.Build<CreateVideoGame.Command>()
                 .With(c => c.Title, title)
                 .With(c => c.Description, description)
                 .With(c => c.Developer, developer)

@@ -4,22 +4,26 @@ using MediatR;
 
 namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 {
-    public record DeleteVideoGame : IRequest<VideoGame>
+    public class DeleteVideoGame
     {
-        public int Id { get; init; }
-    }
 
-    public class DeleteVideoGameHandler(Context context) : IRequestHandler<DeleteVideoGame, VideoGame>
-    {
-        public async Task<VideoGame> Handle(DeleteVideoGame request, CancellationToken cancellationToken)
+        public record Command : IRequest<VideoGame>
         {
-            var videoGame = context.VideoGames
-                .SingleOrDefault(x => x.Id == request.Id);
+            public int Id { get; init; }
+        }
 
-            context.Remove(videoGame);
-            await context.SaveChangesAsync();
+        public class Handler(Context context) : IRequestHandler<Command, VideoGame>
+        {
+            public async Task<VideoGame> Handle(Command request, CancellationToken cancellationToken)
+            {
+                var videoGame = context.VideoGames
+                    .SingleOrDefault(x => x.Id == request.Id);
 
-            return await Task.FromResult(videoGame);
+                context.Remove(videoGame);
+                await context.SaveChangesAsync();
+
+                return await Task.FromResult(videoGame);
+            }
         }
     }
 }

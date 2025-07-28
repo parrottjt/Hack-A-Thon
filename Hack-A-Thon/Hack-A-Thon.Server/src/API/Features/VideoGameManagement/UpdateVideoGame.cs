@@ -18,7 +18,7 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
             public string? EsrbRating { get; set; }
         }
 
-        public class CommandHandler(Context context) : IRequestHandler<Command, VideoGame>
+        public class Handler(Context context) : IRequestHandler<Command, VideoGame>
         {
             public Task<VideoGame> Handle(Command request, CancellationToken cancellationToken)
             {

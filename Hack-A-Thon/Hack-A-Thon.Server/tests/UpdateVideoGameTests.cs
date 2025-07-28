@@ -45,7 +45,7 @@ namespace Hack_A_Thon.Server.tests
             ESRBRating expectedRating)
         {
             using var context = GetInMemoryContext();
-            var handler = new UpdateVideoGame.CommandHandler(context);
+            var handler = new UpdateVideoGame.Handler(context);
 
             var command = _fixture.Build<UpdateVideoGame.Command>()
                 .With(c => c.Id, 1)
