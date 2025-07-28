@@ -1,11 +1,19 @@
-
 import React from 'react';
 import { useVideoGames } from './features/useVideoGame/useVideoGames';
 import VideoGameCard from './VideoGameCard';
 import "./Content.css";
+import Create from './features/createVideoGame/Create';
 
 const Content = () => {
-    const { videoGames, loading, error, filters, setFilters } = useVideoGames({
+    const {
+        videoGames,
+        loading,
+        error,
+        filters,
+        setFilters,
+        updateGame,
+        deleteGame
+    } = useVideoGames({
         title: '',
         developer: '',
         publisher: '',
@@ -19,6 +27,7 @@ const Content = () => {
 
     return (
         <main className="content">
+            <Create refreshGames={() => setFilters(f => ({ ...f, _refresh: Date.now() }))} />
             <div className="filter-container">
                 <input
                     type="text"
@@ -73,10 +82,15 @@ const Content = () => {
             ) : (
                 <div className="card-container">
                     {videoGames.map(game => (
-                        <VideoGameCard key={game.id} data={game} />
+                        <VideoGameCard
+                            key={game.id}
+                            data={game}
+                            onUpdate={updateGame}
+                            onDelete={deleteGame}
+                        />
                     ))}
                 </div>
-            )}
+            )}            
         </main>
     );
 }

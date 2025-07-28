@@ -53,7 +53,6 @@ namespace Hack_A_Thon.Server.tests
             var videoGameForDeletion = context.VideoGames.SingleOrDefault();
             var deleteCommand = _fixture.Build<DeleteVideoGame>()
                 .With(c => c.Id, videoGameForDeletion.Id)
-                .With(c => c.Title, title)
                 .Create();
 
             var result = await deleteHandler.Handle(deleteCommand, CancellationToken.None);

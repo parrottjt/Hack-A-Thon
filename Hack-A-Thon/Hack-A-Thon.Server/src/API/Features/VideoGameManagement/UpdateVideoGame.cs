@@ -24,7 +24,10 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
             {
                 var videoGame = context.VideoGames
                     .Where(x => x.Id == request.Id)
-                    .Single();
+                    .SingleOrDefault();
+
+                if (videoGame == null)
+                    throw new KeyNotFoundException($"VideoGame with Id {request.Id} not found.");
 
                 if (string.IsNullOrEmpty(request.GameCoverImageSrc) == false)
                     videoGame.GameCoverImageSrc = request.GameCoverImageSrc;

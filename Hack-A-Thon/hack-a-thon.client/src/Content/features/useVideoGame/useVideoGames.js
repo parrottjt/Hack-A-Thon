@@ -45,5 +45,53 @@ export function useVideoGames(initialFilters = {
     // eslint-disable-next-line
   }, [filters]);
 
-  return { videoGames, loading, error, filters, setFilters };
+
+  // Update a video game (accepts id and updatedData)
+  const updateGame = async (id, updatedData) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const payload = { ...updatedData, Id: id };
+      const res = await fetch(`https://localhost:7042/Update/`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Failed to update video game");
+      await fetchGames(filters); // Refresh list
+    } catch (e) {
+      setError(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Delete a video game (expects id as argument)
+  const deleteGame = async (id) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`https://localhost:7042/Delete/`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      if (!res.ok) throw new Error("Failed to delete video game");
+      await fetchGames(filters); // Refresh list
+    } catch (e) {
+      setError(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return {
+    videoGames,
+    loading,
+    error,
+    filters,
+    setFilters,
+    updateGame,
+    deleteGame,
+  };
 }
