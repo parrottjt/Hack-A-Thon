@@ -36,9 +36,9 @@ namespace Hack_A_Thon.Server.tests
             string eSRBRating)
         {
             using var context = InMemoryContext();
-            var buildHandler = new CreateVideoGameHandler(context);
+            var buildHandler = new CreateVideoGame.Handler(context);
 
-            var buildCommand = _fixture.Build<CreateVideoGame>()
+            var buildCommand = _fixture.Build<CreateVideoGame.Command>()
                 .With(c => c.Title, title)
                 .With(c => c.Description, description)
                 .With(c => c.Developer, developer)
@@ -49,9 +49,9 @@ namespace Hack_A_Thon.Server.tests
 
             var build = await buildHandler.Handle(buildCommand, CancellationToken.None);
 
-            var deleteHandler = new DeleteVideoGameHandler(context);
+            var deleteHandler = new DeleteVideoGame.Handler(context);
             var videoGameForDeletion = context.VideoGames.SingleOrDefault();
-            var deleteCommand = _fixture.Build<DeleteVideoGame>()
+            var deleteCommand = _fixture.Build<DeleteVideoGame.Command>()
                 .With(c => c.Id, videoGameForDeletion.Id)
                 .Create();
 

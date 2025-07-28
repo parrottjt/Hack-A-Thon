@@ -64,10 +64,10 @@ namespace Hack_A_Thon.Server.tests
         {
             // Arrange
             var context = GetInMemoryContext();
-            var handler = new GetVideoGamesHandler(context);
+            var handler = new GetVideoGames.Handler(context);
 
             // Act
-            var result = await handler.Handle(new GetVideoGames(), CancellationToken.None);
+            var result = await handler.Handle(new GetVideoGames.Command(), CancellationToken.None);
 
             // Assert
             Assert.Equal(4, result.Count);
@@ -84,9 +84,9 @@ namespace Hack_A_Thon.Server.tests
         {
             // Arrange
             var context = GetInMemoryContext();
-            var handler = new GetVideoGameHandler(context);
+            var handler = new GetVideoGame.Handler(context);
 
-            var command = _fixture.Build<GetVideoGame>()
+            var command = _fixture.Build<GetVideoGame.Command>()
                 .With(c => c.Title, title)
                 .With(c => c.Developer, developer)
                 .With(c => c.Publisher, publisher)
@@ -110,9 +110,9 @@ namespace Hack_A_Thon.Server.tests
         {
             // Arrange
             var context = GetInMemoryContext();
-            var handler = new GetVideoGameHandler(context);
+            var handler = new GetVideoGame.Handler(context);
 
-            var command = _fixture.Build<GetVideoGame>()
+            var command = _fixture.Build<GetVideoGame.Command>()
                 .With(c => c.Title, title)
                 .With(c => c.Developer, developer)
                 .With(c => c.Publisher, publisher)

@@ -4,30 +4,22 @@ using MediatR;
 
 namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 {
-    public record GetVideoGames() : IRequest<List<VideoGame>>;
-    public record GetVideoGame() : IRequest<List<VideoGame>>
+    public class GetVideoGame
     {
-        public string? Title { get; init; } = string.Empty;
-        public string? Description { get; init; } = string.Empty;
-        public string? Developer { get; init; } = string.Empty;
-        public string? Publisher { get; init; } = string.Empty;
-        public string? Genre { get; init; } = string.Empty;
-        public ESRBRating? EsrbRating { get; init; } = ESRBRating.Undefined;
-    };
-
-    public class GetVideoGamesHandler(Context context)
-        : IRequestHandler<GetVideoGames, List<VideoGame>>
-    {
-        public Task<List<VideoGame>> Handle(GetVideoGames request, CancellationToken cancellationToken)
+        public record Command() : IRequest<List<VideoGame>>
         {
-            return Task.FromResult(context.VideoGames.ToList());
-        }
-    }
+            public string? Title { get; init; } = string.Empty;
+            public string? Description { get; init; } = string.Empty;
+            public string? Developer { get; init; } = string.Empty;
+            public string? Publisher { get; init; } = string.Empty;
+            public string? Genre { get; init; } = string.Empty;
+            public ESRBRating? EsrbRating { get; init; } = ESRBRating.Undefined;
+        };
 
-    public class GetVideoGameHandler(Context context)
-        : IRequestHandler<GetVideoGame, List<VideoGame>>
-    {
-       public Task<List<VideoGame>> Handle(GetVideoGame request, CancellationToken cancellationToken)
+        public class Handler(Context context)
+        : IRequestHandler<Command, List<VideoGame>>
+        {
+            public Task<List<VideoGame>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var search = request;
                 var query = context.VideoGames.AsQueryable();
@@ -46,6 +38,22 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 
                 return Task.FromResult(query.ToList());
             }
-   
+
+        }
     }
+
+    public class GetVideoGames
+    {
+        public record Command() : IRequest<List<VideoGame>>;
+
+        public class Handler(Context context)
+            : IRequestHandler<Command, List<VideoGame>>
+        {
+            public Task<List<VideoGame>> Handle(Command request, CancellationToken cancellationToken)
+            {
+                return Task.FromResult(context.VideoGames.ToList());
+            }
+        }
+    }
+    
 }

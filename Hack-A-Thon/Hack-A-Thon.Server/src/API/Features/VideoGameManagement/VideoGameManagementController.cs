@@ -11,24 +11,24 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
         [HttpGet("VideoGames")]
         public async Task<ActionResult<List<VideoGame>>> Get()
         {
-            return await mediator.Send(new GetVideoGames());
+            return await mediator.Send(new GetVideoGames.Command());
         }
 
         
         [HttpGet("VideoGame")]
-        public async Task<List<VideoGame>> Get([FromQuery] GetVideoGame command)
+        public async Task<List<VideoGame>> Get([FromQuery] GetVideoGame.Command command)
         {
             return await mediator.Send(command);
         }
 
         [HttpPost("Create")]
-        public async Task<VideoGame> Create([FromBody] CreateVideoGame command)
+        public async Task<VideoGame> Create([FromBody] CreateVideoGame.Command command)
         {
             return await mediator.Send(command);
         }
 
         [HttpDelete("Delete")]
-        public async Task<VideoGame> Delete([FromBody] DeleteVideoGame command)
+        public async Task<VideoGame> Delete([FromBody] DeleteVideoGame.Command command)
         {
             return await mediator.Send(command);
         }
