@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Create = () => {
+const Create = ({ refreshGames }) => {
     const [showModal, setShowModal] = React.useState(false);
 
     const [dto, setDto] = useState({
@@ -12,6 +12,30 @@ const Create = () => {
         genre: '',
         esrbRating: 'Undefined'
     });
+
+    const handleCreate = async () => {
+        try {
+            const res = await fetch('https://localhost:7042/Create/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dto),
+            });
+            if (!res.ok) throw new Error("Failed to create video game");
+            setShowModal(false);
+            setDto({
+                title: '',
+                imageUrl: '',
+                description: '',
+                developer: '',
+                publisher: '',
+                genre: '',
+                esrbRating: 'Undefined'
+            });
+            if (refreshGames) refreshGames();
+        } catch (e) {
+            alert(e.message);
+        }
+    };
 
     const handleChange = (e) => {
         setDto(prev => ({ ...prev, [e.target.name]: e.target.value }));
