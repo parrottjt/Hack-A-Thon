@@ -22,7 +22,7 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
                 context.Remove(videoGame);
                 await context.SaveChangesAsync();
 
-                return await Task.FromResult(videoGame);
+                return videoGame;
             }
         }
     }

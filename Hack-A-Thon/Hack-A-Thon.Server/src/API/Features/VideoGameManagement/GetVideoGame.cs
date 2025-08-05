@@ -1,6 +1,7 @@
 ﻿using Hack_A_Thon.Server.src.API.DB;
 using Hack_A_Thon.Server.src.API.Infastructure.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
 {
@@ -19,7 +20,7 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
         public class Handler(Context context)
         : IRequestHandler<Command, List<VideoGame>>
         {
-            public Task<List<VideoGame>> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<List<VideoGame>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var search = request;
                 var query = context.VideoGames.AsQueryable();
@@ -36,7 +37,7 @@ namespace Hack_A_Thon.Server.src.API.Features.VideoGameManagement
                 if (search.EsrbRating.HasValue)
                     query = query.Where(x => x.EsrbRating == search.EsrbRating);
 
-                return Task.FromResult(query.ToList());
+                return await query.ToListAsync();
             }
 
         }
